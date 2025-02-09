@@ -33,9 +33,7 @@ pub fn benchmark(config: Config) {
         handle_file(path.to_string(), default_file_policy);
     }
 
-    let pkg_name: &str = env!("CARGO_PKG_NAME");
-    let pkg_version: &str = env!("CARGO_PKG_VERSION");
-    let txt = format!("Benchmarking {pkg_name}@v{pkg_version} with {nb_iterations} iterations\n");
+    let txt = format!("Benchmarking with {nb_iterations} iterations\n");
 
     queue_msg(txt.clone());
     if let Some(ref path) = file_path.clone() {

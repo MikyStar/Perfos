@@ -11,3 +11,15 @@ pub fn nano_to_hr(time: Duration) -> String {
 pub fn seconds_to_hr(time: Duration) -> String {
     time.human(Truncate::Second).to_string()
 }
+
+////////////////////////////////////////
+
+#[macro_export]
+macro_rules! time {
+    ($func:expr) => {{
+        let start = Instant::now();
+        let result = $func();
+        let duration = start.elapsed();
+        duration
+    }};
+}
