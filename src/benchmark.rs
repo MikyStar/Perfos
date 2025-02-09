@@ -2,7 +2,6 @@ use std::{sync::mpsc::sync_channel, time::Instant};
 
 use crate::{
     console_ui::queue_msg,
-    constants::{IMPORTING_PROJECT_NAME, IMPORTING_PROJECT_VERSION},
     file::{handle_file, write, FilePolicy},
     message_handler::handle_messages,
     runner::{execute_benchmarks, BenchmarkFunction, FuncThreadMessage},
@@ -38,6 +37,8 @@ pub fn benchmark(config: Config) {
 
     #[cfg(feature = "pkg_data")]
     {
+        let IMPORTING_PROJECT_NAME: &str = env!("CARGO_PKG_NAME");
+        let IMPORTING_PROJECT_VERSION: &str = env!("CARGO_PKG_VERSION");
         txt = format!("Benchmarking {IMPORTING_PROJECT_NAME}@v{IMPORTING_PROJECT_VERSION} with {nb_iterations} iterations\n");
     }
 

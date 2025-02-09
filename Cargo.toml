@@ -1,7 +1,7 @@
 [package]
 name = "perfos"
 description = "Benchmark parts of your Rust code with stats insights"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Mike AUBENAS"]
 edition = "2021"
 readme = "README.md"
@@ -10,7 +10,6 @@ repository = "https://github.com/MikyStar/Perfos"
 license = "MIT"
 
 [features]
-default = ["pkg_data"]
 pkg_data = []
 
 [dev-dependencies]

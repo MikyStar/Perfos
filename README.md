@@ -16,6 +16,15 @@ cargo add perfos
 
 In this example, we are benchmarking the [Sabita](https://github.com/MikyStar/Sabita) package which aims to generate and solve Sudokus
 
+1. Enable auto-naming feature
+
+```toml
+[dependencies]
+perfos = { version = "0.2.2", features = ["pkg_data"] }
+```
+
+2. Configure functions to benchmark
+
 ```rs
 use perfos::{
     benchmark::{benchmark, Config},
@@ -70,7 +79,9 @@ fn solv_10() -> Duration {
 }
 ```
 
-And this code will generate this benchmark report file
+3. Read the results
+
+The code above will generate this benchmark report file
 
 ```txt
 Benchmarking sabita@v0.3.0 with 50 iterations
