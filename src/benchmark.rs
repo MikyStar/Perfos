@@ -33,19 +33,7 @@ pub fn benchmark(config: Config) {
         handle_file(path.to_string(), default_file_policy);
     }
 
-    let txt: String;
-
-    #[cfg(feature = "pkg_data")]
-    {
-        let IMPORTING_PROJECT_NAME: &str = env!("CARGO_PKG_NAME");
-        let IMPORTING_PROJECT_VERSION: &str = env!("CARGO_PKG_VERSION");
-        txt = format!("Benchmarking {IMPORTING_PROJECT_NAME}@v{IMPORTING_PROJECT_VERSION} with {nb_iterations} iterations\n");
-    }
-
-    #[cfg(not(feature = "pkg_data"))]
-    {
-        txt = format!("Benchmarking with {nb_iterations} iterations\n");
-    }
+    let txt = format!("Benchmarking with {nb_iterations} iterations\n");
 
     queue_msg(txt.clone());
     if let Some(ref path) = file_path.clone() {
