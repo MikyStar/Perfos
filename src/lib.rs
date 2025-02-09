@@ -1,5 +1,6 @@
 pub mod benchmark;
 pub mod console_ui;
+pub mod constants;
 pub mod file;
 pub mod histogram;
 pub mod message_handler;

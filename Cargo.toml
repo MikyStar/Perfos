@@ -1,13 +1,17 @@
 [package]
 name = "perfos"
 description = "Benchmark parts of your Rust code with stats insights"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Mike AUBENAS"]
 edition = "2021"
 readme = "README.md"
 rust-version = "1.83.0"
 repository = "https://github.com/MikyStar/Perfos"
 license = "MIT"
+
+[features]
+default = ["pkg_data"]
+pkg_data = []
 
 [dev-dependencies]
 rusty-hook = "^0.11.2"

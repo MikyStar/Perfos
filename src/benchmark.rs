@@ -2,6 +2,7 @@ use std::{sync::mpsc::sync_channel, time::Instant};
 
 use crate::{
     console_ui::queue_msg,
+    constants::{IMPORTING_PROJECT_NAME, IMPORTING_PROJECT_VERSION},
     file::{handle_file, write, FilePolicy},
     message_handler::handle_messages,
     runner::{execute_benchmarks, BenchmarkFunction, FuncThreadMessage},
@@ -33,9 +34,17 @@ pub fn benchmark(config: Config) {
         handle_file(path.to_string(), default_file_policy);
     }
 
-    let pkg_name: &str = env!("CARGO_PKG_NAME");
-    let pkg_version: &str = env!("CARGO_PKG_VERSION");
-    let txt = format!("Benchmarking {pkg_name}@v{pkg_version} with {nb_iterations} iterations\n");
+    let txt: String;
+
+    #[cfg(feature = "pkg_data")]
+    {
+        txt = format!("Benchmarking {IMPORTING_PROJECT_NAME}@v{IMPORTING_PROJECT_VERSION} with {nb_iterations} iterations\n");
+    }
+
+    #[cfg(not(feature = "pkg_data"))]
+    {
+        txt = format!("Benchmarking with {nb_iterations} iterations\n");
+    }
 
     queue_msg(txt.clone());
     if let Some(ref path) = file_path.clone() {

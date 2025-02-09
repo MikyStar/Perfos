@@ -21,7 +21,7 @@ use perfos::{
     benchmark::{benchmark, Config},
     file::FilePolicy,
     runner::BenchmarkFunction,
-    time_utils::time
+    time
 };
 
 use sabita::core::Grid;
@@ -55,14 +55,18 @@ fn get_perfs() {
 ////////////////////
 
 fn benchmark_one_generate() -> Duration {
-    time!(Grid::generate(None))
+    // We want to know the time taken by the "generate" function
+    time!(|| Grid::generate(None))
 }
 
+// We want to know the time taken by the "solve" function when 10 values are missing
 fn solv_10() -> Duration {
+    // First we generate a sudoku with 10 values missing (this step won't be timed)
     let mut grid = Grid::generate(None);
     grid.remove_random_values(10);
 
-    time!(grid.solve())
+    // And now we actually time the "solve" function
+    time!(|| grid.solve())
 }
 ```
 
