@@ -71,10 +71,10 @@ fn solv_10() -> Duration {
 }
 ```
 
-The code above will generate this benchmark report file
+The code above will generate this benchmark report file at the location you provided
 
 ```txt
-Benchmarking sabita@v0.3.0 with 50 iterations
+Benchmarking with 50 iterations
 
 ┌──────────┬──────────────────┬─────────────────┬─────────────┬─────────────────┐
 │ Function │ Average          │ Slowest         │ Fastest     │ Std dev         │
