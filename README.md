@@ -3,8 +3,9 @@
 ![Lint/Security/Dependencies/Tests](https://github.com/MikyStar/Perfos/actions/workflows/test-lint-audit.yml/badge.svg)
 ![crates.io version](https://img.shields.io/crates/v/perfos)
 
-Benchmark part of your Rust code
+Benchmark parts of your Rust code with stats insights
 
+![Use](./doc/perfos.gif)
 
 ## Install
 
