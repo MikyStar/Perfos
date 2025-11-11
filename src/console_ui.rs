@@ -1,8 +1,7 @@
-use super::{file::write, time_utils::nano_to_hr};
+use super::time_utils::nano_to_hr;
 
 use std::{io::stdout, time::Duration};
 
-use ascii_table::{Align, AsciiTable};
 use crossterm::{
     cursor, execute,
     style::{Print, StyledContent, Stylize},
@@ -47,25 +46,6 @@ pub fn clear_lines_from(pos: CursorPos) {
         terminal::Clear(terminal::ClearType::FromCursorDown)
     )
     .unwrap();
-}
-
-pub fn print_table(titles: Vec<String>, data: Vec<Vec<ColoredText>>, file_path: Option<String>) {
-    let mut ascii_table = AsciiTable::default();
-
-    for (i, title) in titles.into_iter().enumerate() {
-        ascii_table
-            .column(i)
-            .set_header(title)
-            .set_align(Align::Center);
-    }
-
-    let table = ascii_table.format(data);
-
-    if let Some(ref path) = file_path {
-        write(path.to_string(), vec![table.clone()]);
-    }
-
-    execute!(stdout(), Print(table), Print("\n"), cursor::MoveToColumn(0),).unwrap();
 }
 
 pub fn queue_msg(txt: String) {

@@ -1,7 +1,7 @@
 use super::{
     console_ui::{
-        clear_lines_from, color_txt, get_cursor_position, print_table, queue_msg, ColoredText,
-        CursorPos, TextColor, ToColorize,
+        clear_lines_from, color_txt, get_cursor_position, queue_msg, ColoredText, CursorPos,
+        TextColor, ToColorize,
     },
     file::write,
     histogram::draw_histogram,
@@ -9,6 +9,7 @@ use super::{
         BenchmarkResult, FuncThreadMessage, ThreadLifecycleMessage, ThreadLifecycleMsgType,
         ThreadMessageType, NB_TESTS,
     },
+    table::print_table,
     time_utils::seconds_to_hr,
 };
 
@@ -155,6 +156,7 @@ fn handle_progress(
     }
 
     print_table(
+        "Benchmarking ...".to_string(),
         vec![
             "Function".to_string(),
             "Started".to_string(),
@@ -198,6 +200,7 @@ fn print_table_results(
     }
 
     print_table(
+        "Benchmark".to_string(),
         vec![
             color_txt(ToColorize::Str("Function".to_string()), TextColor::Cyan).to_string(),
             color_txt(ToColorize::Str("Average".to_string()), TextColor::Yellow).to_string(),
