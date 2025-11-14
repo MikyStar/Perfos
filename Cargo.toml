@@ -1,7 +1,7 @@
 [package]
 name = "perfos"
 description = "Benchmark parts of your Rust code with stats insights"
-version = "0.2.4"
+version = "0.3.0"
 authors = ["Mike AUBENAS"]
 edition = "2021"
 readme = "README.md"
@@ -13,7 +13,7 @@ license = "MIT"
 rusty-hook = "^0.11.2"
 
 [dependencies]
-ascii_table_rs = "1.0.1"
 crossterm = "0.29.0"
 humanize-duration = "0.0.7"
 strip-ansi-escapes = "0.2.1"
+unicode-width = "0.2.2"
