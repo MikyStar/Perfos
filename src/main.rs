@@ -10,7 +10,7 @@ use std::time::Instant;
 ////////////////////////////////////////
 
 fn main() {
-    let file_path = format!("example.benchmark");
+    let file_path = "example.benchmark".to_string();
 
     benchmark(Config {
         file_path: Some(file_path),
