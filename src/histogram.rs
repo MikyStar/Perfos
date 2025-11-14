@@ -224,11 +224,11 @@ fn compute_avg_line(
 
     let txt_len = avg_txt.len() - (3 * 2); // Because '─' takes 3 len, don't know why
 
-    let nb_spaces_needed = largest_title - (txt_len as u16);
+    let nb_spaces_needed = largest_title.saturating_sub(txt_len as u16);
     let spaces = " ".repeat(nb_spaces_needed as usize);
 
     let available_space_for_bar =
-        (terminal_width - (largest_title + largest_count_chars) + 1) as usize;
+        (terminal_width.saturating_sub(largest_title + largest_count_chars) + 1) as usize;
 
     let bar = "─".repeat(available_space_for_bar / 2);
     let line = color_txt(
