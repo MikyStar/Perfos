@@ -28,6 +28,7 @@ pub fn handle_messages(
     start: Instant,
     nb_buckets_arround: u128,
     file_path: Option<String>,
+    nb_iterations: u16,
 ) {
     let mut started: Vec<u8> = vec![0; func_names.len()];
     let mut stopped: Vec<u8> = vec![0; func_names.len()];
@@ -86,7 +87,12 @@ pub fn handle_messages(
 
                     if all_done {
                         clear_lines_from(base_cursor_pos);
-                        print_table_results(results.clone(), &func_names, file_path.clone());
+                        print_table_results(
+                            results.clone(),
+                            &func_names,
+                            file_path.clone(),
+                            nb_iterations,
+                        );
                         print_histograms_results(
                             results.clone(),
                             &func_names,
@@ -173,6 +179,7 @@ fn print_table_results(
     results: Vec<Option<BenchmarkResult>>,
     func_names: &[String],
     file_path: Option<String>,
+    nb_iterations: u16,
 ) {
     let mut data: Vec<Vec<ColoredText>> = vec![];
 
@@ -200,7 +207,7 @@ fn print_table_results(
     }
 
     print_table(
-        "Benchmark".to_string(),
+        format!("Benchmark with {nb_iterations} iterations"),
         vec![
             color_txt(ToColorize::Str("Function".to_string()), TextColor::Cyan).to_string(),
             color_txt(ToColorize::Str("Average".to_string()), TextColor::Yellow).to_string(),

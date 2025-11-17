@@ -2,7 +2,7 @@ use std::{sync::mpsc::sync_channel, time::Instant};
 
 use crate::{
     console_ui::queue_msg,
-    file::{handle_file, write, FilePolicy},
+    file::{handle_file, FilePolicy},
     message_handler::handle_messages,
     runner::{execute_benchmarks, BenchmarkFunction, FuncThreadMessage},
 };
@@ -36,9 +36,6 @@ pub fn benchmark(config: Config) {
     let txt = format!("Benchmarking with {nb_iterations} iterations\n");
 
     queue_msg(txt.clone());
-    if let Some(ref path) = file_path.clone() {
-        write(path.to_string(), vec![txt]);
-    }
 
     let (tx, rx) = sync_channel::<FuncThreadMessage>(1);
 
@@ -46,5 +43,12 @@ pub fn benchmark(config: Config) {
 
     let start = Instant::now();
     execute_benchmarks(tx, functions);
-    handle_messages(rx, f_names, start, nb_buckets_around_avg, file_path);
+    handle_messages(
+        rx,
+        f_names,
+        start,
+        nb_buckets_around_avg,
+        file_path,
+        nb_iterations,
+    );
 }
