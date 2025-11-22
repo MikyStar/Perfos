@@ -19,19 +19,19 @@ fn main() {
         nb_iterations: 50,
         functions: vec![
             BenchmarkFunction {
-                name: "10".to_string(),
+                name: "Fibonacci 10".to_string(),
                 f: Box::new(|| time!(|| fibonacci(10))),
             },
             BenchmarkFunction {
-                name: "20".to_string(),
+                name: "Fibonacci 20".to_string(),
                 f: Box::new(|| time!(|| fibonacci(20))),
             },
             BenchmarkFunction {
-                name: "30".to_string(),
+                name: "Fibonacci 30".to_string(),
                 f: Box::new(|| time!(|| fibonacci(30))),
             },
             BenchmarkFunction {
-                name: "40".to_string(),
+                name: "Fibonacci 40".to_string(),
                 f: Box::new(|| time!(|| fibonacci(40))),
             },
         ],

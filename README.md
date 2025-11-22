@@ -112,6 +112,12 @@ solv10
 73µs 327ns - 83µs 17ns  │ ███ 2%
 ```
 
+You can also check out the _example_ folder or run:
+
+```sh
+cargo run --example main
+```
+
 ### Git hooks
 
 Git hooks are handled with [rusty-hook](https://github.com/swellaby/rusty-hook), to enable them after a fresh install, run `cargo build`
